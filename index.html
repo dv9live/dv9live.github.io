@@ -49,7 +49,7 @@
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi3 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi4 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -185,9 +185,9 @@
 				
 				camera.zoom = scale;
 
-				camera.position.x = distance * Math.sin( phi ) * Math.cos( theta );
-				camera.position.y = distance * Math.cos( phi );
-				camera.position.z = distance * Math.sin( phi ) * Math.sin( theta );
+				camera.position.x = distance/scale * Math.sin( phi ) * Math.cos( theta );
+				camera.position.y = distance/scale * Math.cos( phi );
+				camera.position.z = distance/scale * Math.sin( phi ) * Math.sin( theta );
 
 				camera.lookAt( 0, 0, 0 );
 
