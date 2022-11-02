@@ -45,11 +45,11 @@
 			  beta = event.beta;
 			  gamma = event.gamma;
 			  
-			  const kk = 0.95;
+			  const kk = 0.97;
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi5 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi6 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -90,8 +90,8 @@
 						var dif = dist - dist_prev;
 						dist_prev = dist;
 						
-						scale += dif * 0.05;
-						scale = Math.max( 1, Math.min( 64, scale ) );
+						scale += dif * 0.01;
+						scale = Math.max( 1, Math.min( 4, scale ) );
 						last = Math.round(scale);
 					}
 				  }, false);
@@ -183,11 +183,11 @@
 				var phi = THREE.MathUtils.degToRad( -lat );
 				var theta = THREE.MathUtils.degToRad( -lon );
 				
-				camera.zoom = scale;
+				camera.fov = 75 - scale*10;
 
-				camera.position.x = distance/scale * Math.sin( phi ) * Math.cos( theta );
-				camera.position.y = distance/scale * Math.cos( phi );
-				camera.position.z = distance/scale * Math.sin( phi ) * Math.sin( theta );
+				camera.position.x = distance * Math.sin( phi ) * Math.cos( theta );
+				camera.position.y = distance * Math.cos( phi );
+				camera.position.z = distance * Math.sin( phi ) * Math.sin( theta );
 
 				camera.lookAt( 0, 0, 0 );
 
