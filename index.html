@@ -30,11 +30,11 @@
 		
 			var last = 'start';
 			
-			var lat;
-			var lon;
-			var alpha;
-			var beta;
-			var gamma;
+			var lat = 0;
+			var lon = 0;
+			var alpha = 0;
+			var beta = 0;
+			var gamma = 0;
 						
 			window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
@@ -46,7 +46,7 @@
 			  lat = beta;
 			  lon = alpha;
 
-			  info.innerHTML = 'gyro0 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro1 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -146,7 +146,7 @@
 				//info.innerHTML = Math.round(lat) + ' ' + Math.round(lon);
 			
 				lat = Math.max( - 85, Math.min( 85, lat ) );
-				var phi = THREE.MathUtils.degToRad( lat - 90 );
+				var phi = THREE.MathUtils.degToRad( 90 - lat );
 				var theta = THREE.MathUtils.degToRad( lon );
 				
 				
