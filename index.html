@@ -49,6 +49,10 @@
 				});
 			}
 			
+			video.addEventListener('error', function() {
+				last='error';				
+			});
+			
 			video.addEventListener('loadeddata', function() {
 				last='loaded';
 				video.play();
