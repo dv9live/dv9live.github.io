@@ -45,10 +45,11 @@
 			  beta = event.beta;
 			  gamma = event.gamma;
 			  
-			  lat = beta;
-			  lon = alpha + gamma;
+			  const kk = 0.95;
+			  lat = lat*kk + beta*(1-kk);
+			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+pi '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi2 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -89,7 +90,8 @@
 						var dif = dist - dist_prev;
 						dist_prev = dist;
 						
-						scale += dif*0.1;
+						scale += dif * 0.01;
+						scale = Math.max( 1, Math.min( 4, scale ) );
 						last = scale;
 					}
 				  }, false);
