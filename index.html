@@ -26,7 +26,8 @@
 		</video>
 		
 		<script>
-			
+		
+		var last = 'start';
 			window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
 			  //const absolute = event.absolute;
@@ -34,13 +35,22 @@
 			  var beta = event.beta;
 			  var gamma = event.gamma;
 
-			  info.innerHTML = Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'base0 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
 
+			var sources = video.querySelectorAll('source');
+			if (sources.length !== 0) {
+				var lastSource = sources[sources.length-1];
+				lastSource.addEventListener('error', function(e) {
+					last=e;
+				});
+			}
+			
 			video.addEventListener('loadeddata', function() {
 				console.log('loaded');
+				last='loaded';
 				video.play();
 			});
 
