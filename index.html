@@ -49,7 +49,7 @@
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi4 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi5 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -90,8 +90,8 @@
 						var dif = dist - dist_prev;
 						dist_prev = dist;
 						
-						scale += dif * 0.01;
-						scale = Math.max( 1, Math.min( 4, scale ) );
+						scale += dif * 0.05;
+						scale = Math.max( 1, Math.min( 64, scale ) );
 						last = Math.round(scale);
 					}
 				  }, false);
