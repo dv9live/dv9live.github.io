@@ -35,6 +35,8 @@
 			var alpha = 0;
 			var beta = 0;
 			var gamma = 0;
+			
+			var scale = 1;
 						
 			window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
@@ -44,9 +46,9 @@
 			  gamma = event.gamma;
 			  
 			  lat = beta;
-			  lon = alpha;
+			  lon = alpha + gamma;
 
-			  info.innerHTML = 'gyro2 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro3 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -65,8 +67,33 @@
 				video.play();
 			});
 		</script>
+		
+			
+		<script>
+			document.addEventListener("DOMContentLoaded", function(){
+				var dist_prev = 0;				
+				var el = document.body;
+				  el.addEventListener("touchstart", function(e){
+					if (e.touches.length === 2) {
+						var dist = Math.sqrt(Math.pow(e.touches[0].screenX-e.touches[1].screenX,2)+Math.pow(e.touches[0].screenY-e.touches[1].screenY,2));
+						last = dist;
+					}
+				  }, false);
+				  el.addEventListener("touchend", function(e){
+					
+				  }, false);
+				  el.addEventListener("touchmove", function(e){
+					if (e.touches.length === 2) {
+						var dist = Math.sqrt(Math.pow(e.touches[0].screenX-e.touches[1].screenX,2)+Math.pow(e.touches[0].screenY-e.touches[1].screenY,2));
+						last = dist;
+					}
+				  }, false);
+			});
+						
+		</script>
 
 		<script async src="es-module-shims.js"></script>
+		
 
 		<script type="importmap">
 			{
