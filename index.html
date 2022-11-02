@@ -19,9 +19,9 @@
 		<div id="container"></div>
 
 		<!-- <video id="video" playsinline autoplay muted loop style="display:none"> -->
-		<video id="video" loop muted crossOrigin="anonymous" playsinline webkit-playsinline controls style="display:none">		
+		<video id="video" loop muted crossOrigin="anonymous" playsinline webkit-playsinline controls style="display:none">	
+			<source src="textures/360_injected.mp4" type="video/mp4"/>	
 			<source src="textures/360_injected.webm" type="video/webm"/>
-			<source src="textures/360_injected.mp4" type="video/mp4"/>
 			Your browser does not support such a video
 		</video>
 		
@@ -40,14 +40,6 @@
 			}
 		
 			var video = document.getElementById('video');
-
-			var sources = video.querySelectorAll('source');
-			if (sources.length !== 0) {
-				var lastSource = sources[sources.length-1];
-				lastSource.addEventListener('error', function(e) {
-					last=e;
-				});
-			}
 			
 			video.addEventListener('error', function() {
 				last='error';				
@@ -109,6 +101,8 @@
 				geometry.scale( - 1, 1, 1 );
 
 				const video = document.getElementById( 'video' );
+				video.width=4096/8;
+				video.height=2048/8;
 				video.play();
 
 				const texture = new THREE.VideoTexture( video );
