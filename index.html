@@ -19,7 +19,7 @@
 		<div id="container"></div>
 
 		<!-- <video id="video" playsinline autoplay muted loop style="display:none"> -->
-		<video id="video" loop muted crossOrigin="anonymous" playsinline style="display:none">		
+		<video id="video" loop muted crossOrigin="anonymous" playsinline webkit-playsinline controls style="display:none">		
 			<source src="textures/360_injected.webm" type="video/webm"/>
 			<source src="textures/360_injected.mp4" type="video/mp4"/>
 			Your browser does not support such a video
@@ -28,13 +28,7 @@
 		<script>
 		
 			var last = 'start';
-			
-			window.mousedown = function() {
-				var video1 = document.getElementById('video');
-				video1.play();
-				last = 'cli';
-			}
-			
+						
 			window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
 			  //const absolute = event.absolute;
@@ -56,7 +50,6 @@
 			}
 			
 			video.addEventListener('loadeddata', function() {
-				console.log('loaded');
 				last='loaded';
 				video.play();
 			});
