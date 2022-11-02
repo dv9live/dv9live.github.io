@@ -49,7 +49,7 @@
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi6 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi7 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -184,6 +184,7 @@
 				var theta = THREE.MathUtils.degToRad( -lon );
 				
 				camera.fov = 75 - scale*10;
+				camera.updateProjectionMatrix();
 
 				camera.position.x = distance * Math.sin( phi ) * Math.cos( theta );
 				camera.position.y = distance * Math.cos( phi );
