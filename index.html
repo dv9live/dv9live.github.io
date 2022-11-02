@@ -46,7 +46,7 @@
 			  lat = beta;
 			  lon = alpha;
 
-			  info.innerHTML = 'base5 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro0 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -146,7 +146,7 @@
 				//info.innerHTML = Math.round(lat) + ' ' + Math.round(lon);
 			
 				lat = Math.max( - 85, Math.min( 85, lat ) );
-				var phi = THREE.MathUtils.degToRad( 90 - lat );
+				var phi = THREE.MathUtils.degToRad( lat - 90 );
 				var theta = THREE.MathUtils.degToRad( lon );
 				
 				
