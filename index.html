@@ -27,7 +27,14 @@
 		
 		<script>
 		
-		var last = 'start';
+			var last = 'start';
+			
+			window.mousedown = function() {
+				var video1 = document.getElementById('video');
+				video1.play();
+				last = 'cli';
+			}
+			
 			window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
 			  //const absolute = event.absolute;
