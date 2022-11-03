@@ -240,7 +240,7 @@
 				//camera.updateProjectionMatrix();
 				
 				var alpha1 = alpha * Math.PI / 180;
-				var beta1 = (beta - 90) * Math.PI / 180;
+				var beta1 = beta * Math.PI / 180;
 				var gamma1 = gamma * Math.PI / 180;
 				
 				var deviceEuler = new THREE.Euler();
@@ -248,11 +248,10 @@
 				var worldTransform = new THREE.Quaternion(-Math.sqrt(0.5), 0, 0, Math.sqrt(0.5)); // - PI/2 around the x-axis
 										
 				deviceEuler.set(beta1, alpha1, -gamma1, 'YXZ');
-				//deviceEuler.set(0.01, 0, 0, 'YXZ');
 				deviceQuaternion.setFromEuler(deviceEuler);
 				var quaternion = deviceQuaternion;
 
-				//quaternion.multiply(worldTransform);  // camera looks out the back of the device, not the top
+				quaternion.multiply(worldTransform);  // camera looks out the back of the device, not the top
 
 				camera.quaternion.copy(quaternion);
 				camera.quaternion.normalize();
