@@ -93,7 +93,7 @@
 			
 			var scale = 1;
 			
-			const version = 'gyro8+pi7+i7';
+			const version = 'gyro8+pi8+i8';
 			info.innerHTML = 'there is: ' + version;
 						
 			//window.addEventListener("deviceorientation", handleOrientation, true);
@@ -237,7 +237,7 @@
 
 						
 				camera.fov = 75 - scale*10;
-				//camera.updateProjectionMatrix();
+				camera.updateProjectionMatrix();
 				
 				var alpha1 = alpha * Math.PI / 180;
 				var beta1 = beta * Math.PI / 180;
@@ -286,7 +286,7 @@
 					var video = document.getElementById('video');
 				  video.play();
 				  
-				  //document.getElementById('music').play();
+				  document.getElementById('music').play();
 				  if (typeof DeviceMotionEvent.requestPermission === 'function') {
 						// Handle iOS 13+ devices.
 						//last = 'iphone';
