@@ -21,10 +21,33 @@
 				font-family: 'Tomarik';
 			}
 			
-			#over{
+			.cover{
 			    position: absolute;
+				width: 100%;
 				height: 100%;
 				top: 0;
+				background-image: url("../img/bg.jpg");	
+				background-size:     cover;
+				background-repeat:   no-repeat;
+				background-position: center center; 
+			}
+			.cover1{
+			    position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				background-image: url("../img/bg.jpg");	
+				background-size:     cover;
+				background-repeat:   no-repeat;
+				background-position: center center; 
+			}
+			
+			@media(max-width:991px)
+			{
+				.cover1
+				{
+					display: none;
+				}
 			}
 			
 			.center{
@@ -39,7 +62,8 @@
 				margin: auto;
 				opacity: 0;
 				
-			}.centertext{
+			}
+			.centertext{
 				display: inline-block;
 				position: fixed;
 				top: 70%;
@@ -49,12 +73,25 @@
 				width: 200px;
 				margin: auto;
 				text-align: center;
+				font-size: 22px;
+			}
+			.centertext1{
+				display: inline-block;
+				position: fixed;
+				top: 40%;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 80%;
+				margin: auto;
+				text-align: center;
+				font-size: 36px;
 			}
 			
 		</style>
 	</head>
 	<body>
-		<div id="info">
+		<div id="info" style="display: none">
 			test
 		</div>
 
@@ -73,13 +110,15 @@
 		  <source src="music.ogg" type="audio/ogg">
 		  <source src="music.mp3" type="audio/mpeg">
 		</audio>
-		<div id="over">
-			<img src='img/bg.jpg'/>
+		<div id="over" class="cover">			
 			<img id='icon0' class='center' src='img/0.png'/>
 			<img id='icon1' class='center' src='img/1.png'/>
 			<img id='icon2' class='center' src='img/2.png'/>
 			<img id='icon3' class='center' src='img/3.png'/>
 			<div class='centertext'>КОСНИТЕСЬ ЭКРАНА</div>
+		</div>
+		<div id="over_pc" class="cover1">			
+			<div class='centertext1'>ОТКРОЙТЕ ССЫЛКУ С МОБИЛЬНОГО УСТРОЙСТВА</div>
 		</div>
 		
 		
