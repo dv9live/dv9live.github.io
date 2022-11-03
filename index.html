@@ -61,7 +61,7 @@
 		<div id="container"></div>
 
 		<!-- <video id="video" playsinline autoplay muted loop style="display:none"> -->
-		<video id="video" loop muted crossOrigin="anonymous" playsinline webkit-playsinline controls style="display:none">	
+		<video id="video" loop muted playsinline webkit-playsinline style="display:none">	
 			<source src="textures/test6.mp4" type="video/mp4"/>	
 			<!-- <source src="textures/360_injected.mp4" type="video/mp4"/>	
 			<source src="textures/360_injected.webm" type="video/webm"/> -->
@@ -106,7 +106,7 @@
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi7+i3 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi7+i4 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
