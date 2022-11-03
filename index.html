@@ -6,9 +6,51 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
 		<style>
+			@font-face {
+				font-family: 'Tomarik';
+				src: local('Tomarik Brush'), local('Tomarik-Brush'),
+					url('Tomarik-Brush.woff2') format('woff2'),
+					url('Tomarik-Brush.woff') format('woff'),
+					url('Tomarik-Brush.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+			  }
+			  
 			body {
 				touch-action: none;
+				font-family: 'Tomarik';
 			}
+			
+			#over{
+			    position: absolute;
+				height: 100%;
+				top: 0;
+			}
+			
+			.center{
+				display: inline-block;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				opacity: 0;
+				
+			}.centertext{
+				display: inline-block;
+				position: fixed;
+				top: 70%;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 200px;
+				margin: auto;
+				text-align: center;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -26,6 +68,20 @@
 			Your browser does not support such a video
 		</video>
 		
+		<audio id='music' loop>
+		  <source src="music.ogg" type="audio/ogg">
+		  <source src="music.mp3" type="audio/mpeg">
+		</audio>
+		<div id="over">
+			<img src='img/bg.jpg'/>
+			<img id='icon0' class='center' src='img/0.png'/>
+			<img id='icon1' class='center' src='img/1.png'/>
+			<img id='icon2' class='center' src='img/2.png'/>
+			<img id='icon3' class='center' src='img/3.png'/>
+			<div class='centertext'>КОСНИТЕСЬ ЭКРАНА</div>
+		</div>
+		
+		
 		<script>
 		
 			var last = 'start';
@@ -38,8 +94,9 @@
 			
 			var scale = 1;
 						
-			window.addEventListener("deviceorientation", handleOrientation, true);
+			//window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
+			
 			  //const absolute = event.absolute;
 			  alpha = event.alpha;
 			  beta = event.beta;
@@ -71,7 +128,7 @@
 		
 			
 		<script>
-			document.addEventListener("DOMContentLoaded", function(){
+			document.addEventListener("DOMContentLoaded", function(){					
 				var dist_prev = 0;				
 				var el = document.body;
 				  el.addEventListener("touchstart", function(e){
@@ -196,6 +253,43 @@
 
 			}
 
+		</script>
+		
+		
+		<script src="jquery-3.6.1.min.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function(){	
+				$( "#icon0" ).fadeTo( "slow" , 1);
+				var icon_counter = 0;
+				setInterval(function(){				
+					$( "#icon"+icon_counter ).fadeTo( "slow" , 0);
+					icon_counter++;
+					if(icon_counter > 3) icon_counter = 0;				
+					$( "#icon"+icon_counter ).fadeTo( "slow" , 1);
+				}, 3500);
+				
+				$( "#over" ).mousedown(function() {
+				  $( "#over" ).hide();
+				  document.getElementById('music').play();
+				  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+						// Handle iOS 13+ devices.
+						last = 'iphone';
+						DeviceMotionEvent.requestPermission()
+						  .then((state) => {
+							last = 'ask';
+							if (state === 'granted') {
+								last = 'ok';
+							  window.addEventListener('deviceorientation', handleOrientation);
+							} 
+						  })
+						  .catch(console.error);
+					  } else {
+						// Handle regular non iOS 13+ devices.
+						window.addEventListener('deviceorientation', handleOrientation, true);
+					  }
+				});
+			});
+			
 		</script>
 	</body>
 </html>
