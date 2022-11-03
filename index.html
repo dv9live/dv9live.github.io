@@ -93,14 +93,14 @@
 			
 			var scale = 1;
 			
-			const version = 'gyro6+smoo+pi7+i7';
+			const version = 'gyro7+smoo+pi7+i7';
 			info.innerHTML = 'there is: ' + version;
 						
 			//window.addEventListener("deviceorientation", handleOrientation, true);
 			function handleOrientation(event) {
 			
 			  //const absolute = event.absolute;
-			  const kk = 0;
+			  const kk = 0.9;
 			  alpha = alpha*kk + (1-kk)*event.alpha;
 			  beta = beta*kk + (1-kk)*event.beta;
 			  gamma = gamma*kk + (1-kk)*event.gamma;
@@ -255,8 +255,6 @@
 
 				camera.quaternion.copy(quaternion);
 				camera.quaternion.normalize();
-				
-				console.log(camera.quaternion);
 				
 				/*camera.position.x = distance * Math.sin( alpha1 ) * Math.cos( gamma1 );
 				camera.position.y = -distance * Math.cos( alpha1 ) * Math.sin( beta1 );
