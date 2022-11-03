@@ -106,7 +106,7 @@
 			  lat = lat*kk + beta*(1-kk);
 			  lon = lon*kk + (alpha + gamma)*(1-kk);
 
-			  info.innerHTML = 'gyro4+smoo+pi7+i '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
+			  info.innerHTML = 'gyro4+smoo+pi7+i2 '+last+' '+Math.round(alpha)+' '+Math.round(beta)+' '+Math.round(gamma);
 			}
 		
 			var video = document.getElementById('video');
@@ -270,6 +270,7 @@
 				
 				$( "#over" ).mousedown(function() {
 				  $( "#over" ).hide();
+				  return;
 				  //document.getElementById('music').play();
 				  if (typeof DeviceMotionEvent.requestPermission === 'function') {
 						// Handle iOS 13+ devices.
