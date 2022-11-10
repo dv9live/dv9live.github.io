@@ -41,6 +41,24 @@
 				background-repeat:   no-repeat;
 				background-position: center center; 
 			}
+			.crot{
+			    position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				background-image: url("../img/rot.jpg");	
+				background-size:     cover;
+				background-repeat:   no-repeat;
+				background-position: center center; 
+			}
+			
+			@media screen and (orientation:portrait)
+			{
+				.crot
+				{
+					display: none;
+				}
+			}
 			
 			@media(max-width:1200px)
 			{
@@ -111,6 +129,7 @@
 		  <source src="music.mp3" type="audio/mpeg">
 		</audio>
 		<div id="over" class="cover">			
+			<img id='iconwhite' class='center' src='img/white.png' style='opacity: 1'/>
 			<img id='icon0' class='center' src='img/0.png'/>
 			<img id='icon1' class='center' src='img/1.png'/>
 			<img id='icon2' class='center' src='img/2.png'/>
@@ -119,6 +138,9 @@
 		</div>
 		<div id="over_pc" class="cover1">			
 			<div class='centertext1'>ОТКРОЙТЕ ССЫЛКУ С МОБИЛЬНОГО УСТРОЙСТВА</div>
+		</div>
+		<div id="over_rot" class="crot">			
+			
 		</div>
 		
 		
