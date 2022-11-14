@@ -175,6 +175,7 @@
 						
 			//window.addEventListener("deviceorientation", handleOrientation, true);
 			var idle = 0;
+			var idle_warm = 120;
 			function handleOrientation(event) {
 			
 			  var delta = Math.abs(event.alpha-alpha)+Math.abs(event.beta-beta)+Math.abs(event.gamma-gamma);
@@ -185,7 +186,10 @@
 			  beta = beta*kk + (1-kk)*event.beta;
 			  gamma = gamma*kk + (1-kk)*event.gamma;
 			  
-			  if(delta>2){
+			  if(idle_warm>0){
+				idle_warm--;
+			  }
+			  else if(delta>2){
 				idle = 0;
 				$( "#ded" ).hide();
 			  }
