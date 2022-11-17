@@ -201,13 +201,13 @@
 			  if(idle_warm>0){
 				idle_warm--;
 			  }
-			  else if(delta>10){
+			  else if(delta>3){
 				idle = 0;
 				$( "#ded" ).hide();
 			  }
 			  else{
 				idle++;
-				if( idle>60*2 ){
+				if( idle>60*2*3 ){
 					$( "#ded" ).show();
 				}
 			  }
